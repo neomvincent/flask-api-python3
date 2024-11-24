@@ -2,16 +2,18 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+# Sample data for the API
+items = [
+    {"id": 1, "name": "Item One", "description": "This is the first item."},
+    {"id": 2, "name": "Item Two", "description": "This is the second item."},
+    {"id": 3, "name": "Item Three", "description": "This is the third item."}
+]
+
+@app.route('/api/items', methods=['GET'])
+def get_items():
+    return jsonify(items)
+
+# Minimal root route
 @app.route('/')
 def home():
-    return jsonify({"message": "Welcome to Flask API on Vercel!"})
-
-@app.route('/api/data')
-def get_data():
-    return jsonify({"data": [1, 2, 3, 4, 5]})
-
-# Remove the `app.run()` statement, which isn't needed in serverless deployment
-def handler(req, res):
-    # Flask app serves as a callable function
-    with app.app_context():
-        return app.full_dispatch_request()
+    return jsonify({"message": "Welcome to the Simple Items API!"})
