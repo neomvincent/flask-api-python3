@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return jsonify({"message": "Welcome to Flask API!"})
+    return jsonify({"message": "Welcome to Flask API on Vercel!"})
 
 @app.route('/api/data')
 def get_data():
